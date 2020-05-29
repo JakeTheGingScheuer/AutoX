@@ -1,0 +1,10 @@
+[dev-packages]
+pytest = "*"
+pytest-mock = "*"
+
+[packages]
+flask = "*"
+pytest = "*"
+
+[requires]
+python_version = "3.7"
