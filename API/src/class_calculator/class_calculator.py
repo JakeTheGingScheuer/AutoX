@@ -1,6 +1,6 @@
 import json
 
-BACKUP_DATA_LOCATION = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/src/cars.json'
+BACKUP_DATA_LOCATION = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/cars.json'
 
 class ClassCalculator:
     def __init__(self, data_location):
