@@ -10,9 +10,9 @@ class TestClassCalculator(object):
 
     def test_get_manufacturers_returns_list_of_manufacturers_from_json(self):
         list_of_manufacturers = self.uut.get_manufacturers()
-        assert type(actual) is list
+        assert type(list_of_manufacturers) is list
 
     def test_add_manufacturer_adds_manufacturer_to_list(self):
         self.uut.add_manufacturer("Bugatti")
         list_of_manufacturers = self.uut.get_manufacturers()
-        assert "Bugatti" in brands
+        assert "Bugatti" in list_of_manufacturers
