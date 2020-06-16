@@ -12,3 +12,6 @@ class ClassCalculator:
 
     def add_manufacturer(self, name_of_manufactuer):
         self.manufactuers.append(name_of_manufactuer)
+
+    def remove_manufacturer(self, name_of_manufactuer):
+        self.manufactuers.remove(name_of_manufactuer)
