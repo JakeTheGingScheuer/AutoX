@@ -29,3 +29,7 @@ class ClassCalculator:
             self.data = json.load(file)
         self.manufactuers = self.data["manufactuers"]
         self.save_changes()
+
+    def add_data(self, data):
+        print(json.dumps(data))
+        print

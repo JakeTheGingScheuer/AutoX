@@ -40,3 +40,9 @@ class TestClassCalculator(object):
         self.uut.restore_data()
         list_of_manufacturers = self.uut.get_manufacturers()
         assert "Acura" in list_of_manufacturers
+
+    def test_add_data_calls_add_manufacturer(self):
+        fake_json = {"manufactuers":"Mosler"}
+        self.uut.add_data(fake_json)
+        list_of_manufacturers = self.uut.get_manufacturers()
+        assert "Mosler" in list_of_manufacturers

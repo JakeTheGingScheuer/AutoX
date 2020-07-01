@@ -6,10 +6,10 @@ This project is for the creation of a set of tools to make calculating autocross
 
 ## To build/run
 - Make sure you have ```pipenv``` and ```python 3.7+```installed
-- Then run the following while in ```AutoXCalc/```
+- Then run the following while in ```AutoXCalc/API/```
   - ```pipenv install```
-  - ```pipenv run flask run```
-- To run tests, while in ```AutoXCalc/``` run ```pipenv run pytest```
+  - ```source ./run.sh```
+- To run tests, while in ```AutoXCalc/API/``` run ```pipenv run pytest```
 
 
 
@@ -27,8 +27,13 @@ From personal experience, I started racing in autocross with a 2008 Scion Xb. Th
 
 
 ### TODO
-- Bash script for install/build
 - Docker container
-- Data entry into a database (type yet to be determined)
+- Data entry
 - CI pipeline
 - Deploy to a cloud platform
+
+- Post method to add manufacturers and models
+- Delete method to remove manufacturers and models
+
+- simple react interface for data entry
+- simple react interface for lookup
