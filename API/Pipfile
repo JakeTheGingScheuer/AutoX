@@ -5,6 +5,8 @@ pytest-mock = "*"
 [packages]
 flask = "*"
 pytest = "*"
+requests = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.7"
