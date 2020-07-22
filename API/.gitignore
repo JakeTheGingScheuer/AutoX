@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-.idea/
+.idea
 __pycache__
 templates/main.js
 static
