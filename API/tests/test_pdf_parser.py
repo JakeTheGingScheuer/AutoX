@@ -11,15 +11,15 @@ def test_change_two_word_manufacturers_to_single_string():
 
 def test_parse_pdf_rows_into_list_of_strings():
     file_loaction = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/carClasses.pdf'
-    actual = parse_pdf_rows_into_list_of_strings(file_loaction)[0]
+    actual = extract_pdf_rows_into_list_of_strings(file_loaction)[0]
     expected = "Acura CL H Street HS"
     assert actual == expected
 
 
 def test_change_list_of_strings_to_manufacturer_dict():
     file_location = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/carClasses.pdf'
-    list_of_rows = parse_pdf_rows_into_list_of_strings(file_location)
-    man_dict = change_list_of_strings_to_manufacturer_dict(list_of_rows)
+    list_of_rows = extract_pdf_rows_into_list_of_strings(file_location)
+    man_dict = change_list_of_strings_to_list_of_cars(list_of_rows)
     actual = man_dict["Acura"]
     expected = [{'CL': 'H Street'},
                 {'ILX': 'H Street'},
@@ -40,8 +40,8 @@ def test_change_list_of_strings_to_manufacturer_dict():
 
 def test_print_out_data():
     file_location = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/carClasses.pdf'
-    list_of_rows = parse_pdf_rows_into_list_of_strings(file_location)
-    man_dict = change_list_of_strings_to_manufacturer_dict(list_of_rows)
+    list_of_rows = extract_pdf_rows_into_list_of_strings(file_location)
+    man_dict = change_list_of_strings_to_list_of_cars(list_of_rows)
     for i in man_dict.keys():
         print(i)
         for x in man_dict[i]:

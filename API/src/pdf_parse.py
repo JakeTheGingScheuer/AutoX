@@ -1,6 +1,6 @@
 from tika import parser
 
-from API.src.car import Car
+import API.src.car
 
 file_loaction = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/carClasses.pdf'
 current_year = ' 2020'
@@ -8,7 +8,12 @@ disclaimer_length = 4
 two_word_names = ["Alfa Romeo", "Aston Martin", "General Motors", "Tesla Motors"]
 
 
-def parse_pdf_rows_into_list_of_strings(file_path):
+def parse_pdf_to_car_list():
+    data = extract_pdf_rows_into_list_of_strings(file_loaction)
+    return change_list_of_strings_to_list_of_cars(data)
+
+
+def extract_pdf_rows_into_list_of_strings(file_path):
     raw = parser.from_file(file_path)
     data = raw['content']
     rows_from_pdf = data.split('\n')
@@ -26,15 +31,9 @@ def change_two_word_manufacturers_to_single_string(data_row):
     return data_row
 
 
-def change_list_of_strings_to_manufacturer_dict(list_of_rows):
-    manufacturer_dict = {}
+def change_list_of_strings_to_list_of_cars(list_of_rows):
+    car_list = []
     for row in list_of_rows:
-        car_object = Car.car_from_string(row)
-        car_data = {car_object.model: car_object.car_class}
-
-        try:
-            manufacturer_dict[car_object.make].append(car_data)
-        except KeyError:
-            manufacturer_dict[car_object.make] = []
-            manufacturer_dict[car_object.make].append(car_data)
-    return manufacturer_dict
+        car_object = API.src.car.Car.car_from_string(row)
+        car_list.append(car_object)
+    return car_list

@@ -1,28 +1,25 @@
 #!flask/bin/python
 import os
-from flask import Flask, render_template, request
-from src.class_calculator.class_calculator import ClassCalculator
 
-DATA_LOCATION = os.getcwd()+'/data/cars.json'
+from flask import Flask, render_template
 
-calculator = ClassCalculator(DATA_LOCATION)
+from API.src.mongo_wrapper import MongoWrapper
+from API.src.pdf_parse import parse_pdf_to_car_list
+
+mongo = MongoWrapper("AutoX")
 app = Flask(__name__)
+
+car_list = parse_pdf_to_car_list()
+mongo.use_database("AutoX")
+mongo.use_collection("StreetClass")
+for car in car_list:
+    mongo_object = car.to_mongo()
+    mongo.insert(mongo_object)
 
 
 @app.route('/')
 def index():
     return render_template("index.html")
-
-
-@app.route('/api/data')
-def get_car_data():
-    return calculator.data, 200
-
-
-@app.route('/api/data', methods=['POST'])
-def add_car_data():
-    data = request.get_data()
-    return data, 200
 
 
 if __name__ == "__main__":
