@@ -1,6 +1,6 @@
 module.exports = {
     entry: [
-        './src/index.jsx'
+        './src/index.js'
     ],
     module: {
         rules: [
@@ -10,6 +10,9 @@ module.exports = {
                 use: ['babel-loader']
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
     output: {
         path: __dirname + '../../static',

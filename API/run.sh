@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 cd react_app
 npm run dev
 cd ..

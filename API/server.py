@@ -1,25 +1,26 @@
 #!flask/bin/python
 import os
+from flask import Flask, render_template, jsonify
+from flask_cors import CORS
+from API.src.mongo_controller import MongoController
 
-from flask import Flask, render_template
-
-from API.src.mongo_wrapper import MongoWrapper
-from API.src.pdf_parse import parse_pdf_to_car_list
-
-mongo = MongoWrapper("AutoX")
+mongo_controller = MongoController()
 app = Flask(__name__)
+mongo_controller.populate_mongo()
 
-car_list = parse_pdf_to_car_list()
-mongo.use_database("AutoX")
-mongo.use_collection("StreetClass")
-for car in car_list:
-    mongo_object = car.to_mongo()
-    mongo.insert(mongo_object)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/')
 def index():
     return render_template("index.html")
+
+
+@app.route('/api/street_class/')
+def get_street_class_data():
+    cars = mongo_controller.get_manufacturer_dict()
+    return jsonify(cars), 200
 
 
 if __name__ == "__main__":

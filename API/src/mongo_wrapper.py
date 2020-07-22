@@ -20,11 +20,14 @@ class MongoWrapper:
     def list_collections(self):
         return self.client[self.current_db].list_collections()
 
-    def insert(self, document):
-        return self.client[self.current_db][self.current_collection].insert(document, check_keys=False)
+    def insert_one(self, document):
+        return self.client[self.current_db][self.current_collection].insert_one(document)
 
     def find(self, query_object):
         return self.client[self.current_db][self.current_collection].find(query_object)
 
     def find_one(self, query_object):
         return self.client[self.current_db][self.current_collection].find_one(query_object)
+
+    def drop_collection(self, collection_name):
+        return self.client[self.current_db][collection_name].drop()
