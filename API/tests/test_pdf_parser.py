@@ -42,8 +42,7 @@ def test_print_out_data():
     file_location = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/carClasses.pdf'
     list_of_rows = extract_pdf_rows_into_list_of_strings(file_location)
     man_dict = change_list_of_strings_to_list_of_cars(list_of_rows)
-    for i in man_dict.keys():
+    for i in man_dict:
         print(i)
-        for x in man_dict[i]:
-            print(f"-----------{x}")
+
     assert 1 == 1

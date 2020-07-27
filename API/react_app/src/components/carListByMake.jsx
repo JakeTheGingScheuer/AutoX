@@ -1,6 +1,7 @@
 import React from "react";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import CarList from "./carList";
 
 export default class CarListByMake extends React.Component {
     constructor(props) {
@@ -20,12 +21,8 @@ export default class CarListByMake extends React.Component {
     }
 
     carList(){
-        const result = []
-        for(const i in this.state.car_data){
-            result.push([i, this.state.car_data[i]]);
-        }
-        console.log(result)
-        return result
+        const cars = CarList()
+        return cars.carDataConversion(this.state.car_data)
     }
 
     render() {
