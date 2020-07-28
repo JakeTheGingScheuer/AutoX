@@ -20,15 +20,6 @@ export default class CarListByMake extends React.Component {
         })
     }
 
-    carList(){
-        const result = []
-        for(const i in this.state.car_data){
-            result.push([i, this.state.car_data[i]]);
-        }
-        return result
-    }
-
-
     render() {
         if (this.state.loading) {
             return <div>Loading...</div>
@@ -39,7 +30,7 @@ export default class CarListByMake extends React.Component {
         }
         return (
             <div>
-                <CarList data={this.carList()}/>
+                <CarList data={this.state.car_data}/>
             </div>
         );
     }
