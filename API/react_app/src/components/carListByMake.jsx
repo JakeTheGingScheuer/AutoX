@@ -21,9 +21,13 @@ export default class CarListByMake extends React.Component {
     }
 
     carList(){
-        const cars = CarList()
-        return cars.carDataConversion(this.state.car_data)
+        const result = []
+        for(const i in this.state.car_data){
+            result.push([i, this.state.car_data[i]]);
+        }
+        return result
     }
+
 
     render() {
         if (this.state.loading) {
@@ -33,12 +37,9 @@ export default class CarListByMake extends React.Component {
         if (!this.state.car_data) {
             return <div>No car data...</div>
         }
-
         return (
             <div>
-                <ul>
-                    <li>{this.carList()[1][0]}</li>
-                </ul>
+                <CarList data={this.carList()}/>
             </div>
         );
     }
