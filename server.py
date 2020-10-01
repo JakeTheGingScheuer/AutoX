@@ -1,25 +1,20 @@
 #!flask/bin/python
 import os
-from flask import Flask, render_template, jsonify
+from flask import Flask, jsonify
 from flask_cors import CORS
-from API.src.mongo_controller import MongoController
+from src.api import Api
 
-mongo_controller = MongoController()
+api = Api()
+
 app = Flask(__name__)
-mongo_controller.populate_mongo()
 
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-@app.route('/')
-def index():
-    return render_template("index.html")
-
-
 @app.route('/api/street_class/')
 def get_street_class_data():
-    cars = mongo_controller.get_manufacturer_dict()
+    cars = api.get_car_data()
     return jsonify(cars), 200
 
 

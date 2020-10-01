@@ -1,8 +1,8 @@
 from tika import parser
 
-import API.src.car
+import src.car
 
-file_loaction = '/Users/jacob.scheuer/Development/python/AutoXCalc/API/data/carClasses.pdf'
+file_loaction = '/Users/jacob.scheuer/Development/python/AutoXAPI/data/carClasses.pdf'
 current_year = ' 2020'
 disclaimer_length = 4
 two_word_names = ["Alfa Romeo", "Aston Martin", "General Motors", "Tesla Motors"]
@@ -34,6 +34,6 @@ def change_two_word_manufacturers_to_single_string(data_row):
 def change_list_of_strings_to_list_of_cars(list_of_rows):
     car_list = []
     for row in list_of_rows:
-        car_object = API.src.car.Car.car_from_string(row)
+        car_object = src.car.Car.car_from_string(row)
         car_list.append(car_object)
     return car_list

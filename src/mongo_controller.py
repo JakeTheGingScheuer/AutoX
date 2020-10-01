@@ -1,6 +1,6 @@
-from API.src.car import Car
-from API.src.mongo_wrapper import MongoWrapper
-from API.src.pdf_parse import parse_pdf_to_car_list
+from src.car import Car
+from src.mongo_wrapper import MongoWrapper
+from src.pdf_parse import parse_pdf_to_car_list
 
 
 class MongoController:
@@ -27,8 +27,9 @@ class MongoController:
 
         for car in car_list:
             try:
-                manufacturer_dict[car.make].append(car.car_data())
+                manufacturer_dict[car.make][car.model] = car.car_class
             except KeyError:
-                manufacturer_dict[car.make] = [car.car_data()]
+                manufacturer_dict[car.make] = {}
+                manufacturer_dict[car.make][car.model] = car.car_class
 
         return manufacturer_dict

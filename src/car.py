@@ -40,6 +40,3 @@ class Car:
         car.model = document["model"]
         car.car_class = document["car_class"]
         return car
-
-    def car_data(self):
-        return {self.model: self.car_class}

@@ -1,4 +1,4 @@
-from API.src.car import Car
+from src.car import Car
 
 
 def test_string_to_car():
