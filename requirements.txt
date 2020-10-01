@@ -1,0 +1,7 @@
+pytest-mock
+flask
+pytest
+requests
+pymongo
+tika
+flask-cors

@@ -1,10 +1,5 @@
 runtime: python37
-api_version: 1
-threadsafe: true
 
 handlers:
 - url: /
-  script: server.py
-
-- url: /.*
-  script: server.py
+  script: auto
