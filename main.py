@@ -12,10 +12,15 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/')
+def index():
+    return 'server is up'
+
+
+@app.route('/street_class')
 def get_street_class_data():
     cars = api.get_car_data()
     return jsonify(cars), 200
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

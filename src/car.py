@@ -28,15 +28,7 @@ class Car:
 
         return car
 
-    def to_mongo(self):
+    def to_map(self):
         return {"make": self.make,
                 "model": self.model,
                 "car_class": self.car_class}
-
-    @staticmethod
-    def from_mongo(document):
-        car = Car()
-        car.make = document["make"]
-        car.model = document["model"]
-        car.car_class = document["car_class"]
-        return car

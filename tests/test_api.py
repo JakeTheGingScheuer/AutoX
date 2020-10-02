@@ -1,23 +1,16 @@
-from mock import MagicMock
-
 from src.api import Api
+from src.car import Car
 
-fake_car_data = {
-    "Honda": {
-        "Civic": "HS",
-        "Accord": "GS"
-    },
-    "Subaru": {
-        "BRZ": "DS",
-        "WRX": "DS"
-    }
-}
+fake_car_list = [
+    Car(make="Honda", model="Civic", car_class="HS"),
+    Car(make="Honda", model="Accord", car_class="GS"),
+    Car(make="Subaru", model="BRZ", car_class="DS"),
+    Car(make="Subaru", model="WRX", car_class="DS")
+]
 
 
 def test__get_car_data__returns_formatted_json():
-    fake_mongo = MagicMock()
-    fake_mongo.get_manufacturer_dict = MagicMock(return_value=fake_car_data)
-    subject = Api(fake_mongo)
+    subject = Api(fake_car_list)
 
     actual = subject.get_car_data()
     expected = {

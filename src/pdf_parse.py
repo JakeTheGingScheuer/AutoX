@@ -1,8 +1,8 @@
 from tika import parser
-
+from utils import _GIT_ROOT
 import src.car
 
-file_loaction = '/Users/jacob.scheuer/Development/python/AutoXAPI/data/carClasses.pdf'
+file_loaction = (_GIT_ROOT / 'data/carClasses.pdf').as_posix()
 current_year = ' 2020'
 disclaimer_length = 4
 two_word_names = ["Alfa Romeo", "Aston Martin", "General Motors", "Tesla Motors"]
