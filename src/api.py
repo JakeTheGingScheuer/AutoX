@@ -1,10 +1,13 @@
-from src.pdf_parse import parse_pdf_to_car_list
+from data.extracted_data import cars
+from src.car import Car
+
+extracted_data = cars
 
 
 class Api:
 
     def __init__(self, cars_from_pdf=None):
-        self.car_list = cars_from_pdf or parse_pdf_to_car_list()
+        self.car_list = cars_from_pdf or self.change_list_of_strings_to_list_of_cars()
 
     def get_car_data(self):
         manufacturer2model2class = self.group_cars_by_make()
@@ -35,3 +38,10 @@ class Api:
             json_response["manufacturers"].append({"name": manufacturer, "carModels": car_models})
 
         return json_response
+
+    def change_list_of_strings_to_list_of_cars(self):
+        car_list = []
+        for row in cars:
+            car_object = Car.car_from_string(row)
+            car_list.append(car_object)
+        return car_list

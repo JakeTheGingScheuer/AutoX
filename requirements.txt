@@ -2,6 +2,6 @@ pytest-mock
 flask
 pytest
 requests
-tika
 flask-cors
 uwsgi
+# tika
